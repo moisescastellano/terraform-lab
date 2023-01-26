@@ -83,7 +83,7 @@ resource "ibm_is_instance" "instance-moi-3" {
   }
   vpc  = "${ibm_is_vpc.vpc1.id}"
   zone = "${var.zone3}"
-  keys = ["${ibm_is_ssh_key.ssh1.id}"]
+  keys = [data.ibm_is_ssh_key.sshkey1.id]
   user_data = "${data.template_cloudinit_config.cloud-init-apptier.rendered}"
 }
 
