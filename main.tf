@@ -45,7 +45,7 @@ resource "ibm_is_subnet" "subnet2" {
 }
 
 resource "ibm_is_instance" "instance-moi-1" {
-  name    = "instance1"
+  name    = "instance-moi-1"
   image   = var.image
   profile = var.profile
   primary_network_interface {
@@ -59,7 +59,7 @@ resource "ibm_is_instance" "instance-moi-1" {
 }
 
 resource "ibm_is_instance" "instance-moi-2" {
-  name    = "instance2"
+  name    = "instance-moi-2"
   image   = var.image
   profile = var.profile
   primary_network_interface {
