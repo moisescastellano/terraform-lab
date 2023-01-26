@@ -75,16 +75,17 @@ resource "ibm_is_instance" "instance-moi-1" {
 
 resource "ibm_is_instance" "instance-moi-3" {
   name    = "instance-moi-3"
-  image   = "${var.image}"
-  profile = "${var.profile}"
+  image   = var.image
+  profile = var.profile
 
-  primary_network_interface = {
-    subnet = "${ibm_is_subnet.subnet3.id}"
+  primary_network_interface {
+    subnet = ibm_is_subnet.subnet1.id
   }
-  vpc  = "${ibm_is_vpc.vpc1.id}"
-  zone = "${var.zone3}"
+  vpc  = ibm_is_vpc.vpc1.id
+  zone = var.zone3
   keys = [data.ibm_is_ssh_key.sshkey1.id]
-  user_data = "${data.template_cloudinit_config.cloud-init-apptier.rendered}"
+  user_data = data.template_cloudinit_config.cloud-init-apptier.rendered
+  resource_group = data.ibm_resource_group.rg.id
 }
 
 resource "ibm_is_instance" "instance-moi-2" {
